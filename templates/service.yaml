@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+  labels:
+    env: {{ .Values.env }}
+    app: {{ .Release.Name }}-{{.Values.env}}
+    appType: {{ .Values.labels.appType }}
+  annotations: 
+     cloud.google.com/backend-config: '{"ports": {"{{ .Values.port.externalPort }}":"{{ .Release.Name }}-backendconfig"}}'
+spec:
+  type: {{ .Values.service.type | default "ClusterIP" }}
+  ports:
+    - port: {{ .Values.port.externalPort }}
+      targetPort: {{ .Values.port.internalPort }}
+      protocol: TCP
+  selector:
+    app: {{ .Release.Name }}-{{.Values.env}}

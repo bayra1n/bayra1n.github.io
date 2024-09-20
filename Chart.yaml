@@ -1,0 +1,8 @@
+apiVersion: v2
+name: kemenkes-service-chart
+description: A Helm chart for deploying applications with configmaps, secrets, and HPA
+version: 0.1.0
+appVersion: "1.0"
+maintainers:
+  - name: YourName
+    email: your-email@example.com

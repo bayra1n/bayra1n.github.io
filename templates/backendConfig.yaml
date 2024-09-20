@@ -1,0 +1,27 @@
+{{- if .Values.backendConfig.enableBc }}
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: {{ .Release.Name }}-backendconfig
+  labels:
+    env: {{ .Values.env }}
+    app: {{ .Release.Name }}-{{ .Values.env }}
+    appType: {{ .Values.labels.appType }}
+spec:
+  healthCheck:
+    checkIntervalSec: 30
+    timeoutSec: 5
+    healthyThreshold: 1
+    unhealthyThreshold: 5
+    type: {{ .Values.backendConfig.hc.type | default "HTTP" }}
+    requestPath: {{ .Values.backendConfig.hc.requestPath | default "/" }}
+    port: {{ .Values.port.externalPort }}
+  securityPolicy:
+    {{- if .Values.backendConfig.securityPolicy.enable }}
+    name: {{ .Values.backendConfig.securityPolicy.name }}
+    {{- end }}
+  logging:
+    enable: {{ .Values.backendConfig.logging | default false }}
+    sampleRate: 0.1
+  timeoutSec: 300
+{{- end }}
