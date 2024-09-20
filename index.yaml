@@ -12,6 +12,6 @@ entries:
       name: YourName
     name: kemenkes-service-chart
     urls:
-    - https://bayra1n.github.io/deploy-resource/kemenkes-service-chart-0.1.0.tgz
+    - https://bayra1n.github.io/kemenkes-service-chart-0.1.0.tgz
     version: 0.1.0
 generated: "2024-09-20T14:40:42.57762654+07:00"
