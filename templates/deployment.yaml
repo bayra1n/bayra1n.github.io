@@ -25,11 +25,11 @@ spec:
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "{{ .Values.resources.requestsMemory | default "64Mi" | quote }}"
-            cpu: "{{ .Values.resources.requestsCpu | default "250m" | quote }}"
+            memory: "{{ .Values.resources.requestsMemory | default "64Mi" }}"
+            cpu: "{{ .Values.resources.requestsCpu | default "250m" }}"
           limits:
-            memory: "{{ .Values.resources.limitMemory | default "512Mi" | quote }}"
-            cpu: "{{ .Values.resources.limitCpu | default "1Gi" | quote }}"
+            memory: "{{ .Values.resources.limitMemory | default "512Mi" }}"
+            cpu: "{{ .Values.resources.limitCpu | default "1Gi" }}"
         envFrom:
           {{- range .Values.configmaps }}
           - configMapRef:
