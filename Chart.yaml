@@ -1,7 +1,7 @@
 apiVersion: v2
 name: kemenkes-service-chart
 description: A Helm chart for deploying applications with deployment, configmaps, external secrets, service, backendconfig, and HPA.
-version: 0.1.5
+version: 0.1.6
 appVersion: "1.0"
 maintainers:
   - name: YourName

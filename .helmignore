@@ -1,0 +1,6 @@
+*.tgz
+LICENSE
+README.md
+*.txt
+git
+.git
