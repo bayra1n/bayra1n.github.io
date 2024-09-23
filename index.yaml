@@ -3,7 +3,20 @@ entries:
   kemenkes-service-chart:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-09-20T17:07:22.653959304+07:00"
+    created: "2024-09-23T09:34:26.214873932+07:00"
+    description: A Helm chart for deploying applications with deployment, configmaps,
+      external secrets, service, backendconfig, and HPA.
+    digest: 8ceab135dda6147d3ef533d8329f0aba4da7e4c7b732488478d591c404216d67
+    maintainers:
+    - email: your-email@example.com
+      name: YourName
+    name: kemenkes-service-chart
+    urls:
+    - https://bayra1n.github.io/kemenkes-service-chart-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2024-09-23T09:34:26.211914074+07:00"
     description: A Helm chart for deploying applications with deployment, configmaps,
       external secrets, service, backendconfig, and HPA.
     digest: daf450c0eccbd3436cdbdf8ef25b52a0b2a55b6e6b070f170a3a9928562bd8e0
@@ -16,7 +29,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-09-20T17:07:22.652682956+07:00"
+    created: "2024-09-23T09:34:26.210639929+07:00"
     description: A Helm chart for deploying applications with deployment, configmaps,
       external secrets, service, backendconfig, and HPA.
     digest: 08e3439882db8eccd01508fe99379bbdd32375edbf00e4be67fc12f77a768c0b
@@ -27,4 +40,4 @@ entries:
     urls:
     - https://bayra1n.github.io/kemenkes-service-chart-0.1.1.tgz
     version: 0.1.1
-generated: "2024-09-20T17:07:22.651635835+07:00"
+generated: "2024-09-23T09:34:26.209774846+07:00"

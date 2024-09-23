@@ -17,7 +17,7 @@ spec:
         app: {{ .Release.Name }}-{{ .Values.env }}
     spec:
       imagePullSecrets:
-        - name: {{ .Values.deployment.imageAccess | default "artifact-access" }}
+        - name: {{ .Values.deployment.imageAccess | default "artifact-access" | quote }}
       restartPolicy: Always
       containers:
       - name: {{ .Release.Name }}-container
@@ -25,27 +25,31 @@ spec:
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "{{ .Values.resources.requestsMemory | default "64Mi" }}"
-            cpu: "{{ .Values.resources.requestsCpu | default "250m" }}"
+            memory: "{{ .Values.resources.requestsMemory | default "64Mi" | quote }}"
+            cpu: "{{ .Values.resources.requestsCpu | default "250m" | quote }}"
           limits:
-            memory: "{{ .Values.resources.limitMemory | default "512Mi" }}"
-            cpu: "{{ .Values.resources.limitCpu | default "1Gi" }}"
+            memory: "{{ .Values.resources.limitMemory | default "512Mi" | quote }}"
+            cpu: "{{ .Values.resources.limitCpu | default "1Gi" | quote }}"
         envFrom:
           {{- range .Values.configmaps }}
           - configMapRef:
               name: {{ .name }}-{{ $.Values.env }}
           {{- end }}
-        env:
-          {{- range .Values.deployment.envSecrets }}
-            {{- $secretName := .secretName }}
-            {{- range .secretKeys }}
-            - name: {{ . }}
-              valueFrom:
-                secretKeyRef:
-                  name: {{ $secretName }}
-                  key: {{ . }}
-            {{- end }}
+          {{- range .Values.externalSecrets }}
+          - secretRef:
+              name: {{ .name }}
           {{- end }}
+        # env:
+        #   {{- range .Values.deployment.envSecrets }}
+        #     {{- $secretName := .secretName }}
+        #     {{- range .secretKeys }}
+        #     - name: {{ . }}
+        #       valueFrom:
+        #         secretKeyRef:
+        #           name: {{ $secretName }}
+        #           key: {{ . }}
+        #     {{- end }}
+        #   {{- end }}
         ports:
           - containerPort: {{ .Values.port.internalPort }}
             protocol: TCP
