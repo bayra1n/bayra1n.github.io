@@ -1,4 +1,4 @@
-*.tgz
+charts/*.tgz
 LICENSE
 README.md
 *.txt
